@@ -1,35 +1,64 @@
-function convertTemperature(value, unit) {
-  if (unit === 'f') {
-    return (value * (9/5)) + 32;
-  } else if (unit === 'c') {
-    return (value * (5/9)) - 32;
-  }
+function convertToCelsius(value) {
+  return (value - 32) * (5/9);
+}
+
+function convertToFahrenheit(value) {
+  return (value * (9/5)) + 32;
 }
 
 function init() {
-  const temperatureInput = document.getElementById('temperature');
-  const resultEl = document.getElementById('result');
-  const unitFromEl = document.getElementById('unitFrom');
-  const unitToEl = document.getElementById('unitTo');
-  const switchUnitsButton = document.getElementById('switchUnits');
+  const dom = {
+    temperatureInput: document.getElementById('temperature'),
+    result: document.getElementById('result'),
+    unitFrom: document.getElementById('unitFrom'),
+    unitTo: document.getElementById('unitTo'),
+    switchUnitsButton: document.getElementById('switchUnits')
+  }
 
-  let currentUnit = 'c';
+  let toCelsius = true;
   let result = 0;
 
   function switchUnit() {
-    currentUnit === 'c' ? currentUnit = 'f' : currentUnit = 'c';
+    let temp;
+    temp = dom.temperatureInput.value;
+    dom.temperatureInput.value = result;
+    result = temp;
+
+    toCelsius = !toCelsius;
   }
 
-  switchUnitsButton.addEventListener('click', function () {
-    switchUnit();
-    if (currentUnit === 'c') {
-      unitFromEl.textContent = 'Fahrenheit';
-      unitToEl.textContent = 'Celsius';
-    } else if (currentUnit === 'f') {
-      unitFromEl.textContent = 'Celsius';
-      unitToEl.textContent = 'Fahrenheit';
+  function displayUnits() {
+    dom.unitTo.textContent = toCelsius ? 'Celsius' : 'Fahrenheit';
+    dom.unitFrom.textContent = !toCelsius ? 'Celsius' : 'Fahrenheit';
+  }
+
+  function convertTemperature() {
+    const input = dom.temperatureInput.value;
+
+    if (toCelsius) {
+      result = Math.floor(convertToCelsius(input));
+    } else {
+      result = Math.floor(convertToFahrenheit(input));
     }
+  }
+
+  function displayTemperature() {
+    dom.result.textContent = result;
+  }
+
+  dom.switchUnitsButton.addEventListener('click', function () {
+    switchUnit();
+    displayUnits();
+    displayTemperature();
   });
+
+  dom.temperatureInput.addEventListener('input', function () {
+    convertTemperature();
+    displayTemperature();
+  });
+
+  displayUnits();
+  displayTemperature();
 }
 
 document.addEventListener('DOMContentLoaded', init);
