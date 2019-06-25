@@ -2,29 +2,23 @@ function largest(a, b) {
   return a > b ? a : b;
 }
 
-function getLargest(input1, input2) {
-  const firstNumber = Number(input1.value);
-  const secondNumber = Number(input2.value);
-  return largest(firstNumber, secondNumber);
-}
-
-function displayLargest(result, element) {
-  element.textContent = result;
-}
-
 function init() {
-  const firstNumberEl = document.getElementById('first-number');
-  const secondNumberEl = document.getElementById('second-number');
-  const resultEl = document.getElementById('result');
+  const dom = {
+    firstNumber: document.getElementById('first-number'),
+    secondNumber: document.getElementById('second-number'),
+    result: document.getElementById('result')
+  }
 
-  firstNumberEl.addEventListener('input', function () {
-    const largestNumber = getLargest(firstNumberEl, secondNumberEl);
-    displayLargest(largestNumber, resultEl);
-  });
-  secondNumberEl.addEventListener('input', function () {
-    const largestNumber = getLargest(firstNumberEl, secondNumberEl);
-    displayLargest(largestNumber, resultEl);
-  });
+  function displayLargestNumber() {
+    const firstNumber = dom.firstNumber.value;
+    const secondNumber = dom.secondNumber.value;
+    const largestNumber = largest(firstNumber, secondNumber);
+
+    dom.result.textContent = largestNumber;
+  }
+
+  dom.firstNumber.addEventListener('input', displayLargestNumber);
+  dom.secondNumber.addEventListener('input', displayLargestNumber);
 }
 
 document.addEventListener('DOMContentLoaded', init);
