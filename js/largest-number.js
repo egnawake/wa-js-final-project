@@ -9,6 +9,9 @@ function init() {
     result: document.getElementById('result')
   }
 
+  dom.firstNumber.value = 0;
+  dom.secondNumber.value = 0;
+
   function displayLargestNumber() {
     const firstNumber = dom.firstNumber.value;
     const secondNumber = dom.secondNumber.value;
