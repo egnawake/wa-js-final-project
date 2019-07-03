@@ -13,11 +13,17 @@ function init() {
   dom.secondNumber.value = 0;
 
   function displayLargestNumber() {
-    const firstNumber = dom.firstNumber.value;
-    const secondNumber = dom.secondNumber.value;
-    const largestNumber = largest(firstNumber, secondNumber);
+    const firstNumberInput = dom.firstNumber.value;
+    const secondNumberInput = dom.secondNumber.value;
 
-    dom.result.textContent = largestNumber;
+    let result;
+    if (firstNumberInput === '' || secondNumberInput === '') {
+      result = 'Insira dois números';
+    } else {
+      result = largest(Number(firstNumberInput), Number(secondNumberInput));
+    }
+
+    dom.result.textContent = result;
   }
 
   dom.firstNumber.addEventListener('input', displayLargestNumber);
