@@ -21,13 +21,13 @@ function init() {
   }
 
   function findResult() {
+    attempts++;
     const guess = getGuess();
+
     if (guess < goal) {
       dom.feedback.textContent = `${guess} is smaller than the secret number.`;
-      attempts++;
     } else if (guess > goal) {
       dom.feedback.textContent = `${guess} is larger than the secret number.`;
-      attempts++;
     } else {
       dom.feedback.textContent = `Congratulations! The secret number was ${guess}!`;
       dom.guessInput.setAttribute('disabled', '');
