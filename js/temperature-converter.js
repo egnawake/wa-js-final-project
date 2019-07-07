@@ -16,7 +16,8 @@ function init() {
   }
 
   let toCelsius = false;
-  let result = 0;
+  let result = '...';
+  dom.temperatureInput.value = '';
 
   function switchUnit() {
     let temp;
@@ -35,10 +36,14 @@ function init() {
   function convertTemperature() {
     const input = dom.temperatureInput.value;
 
-    if (toCelsius) {
-      result = Math.floor(convertToCelsius(input));
+    if (input !== '') {
+      if (toCelsius) {
+        result = Math.floor(convertToCelsius(input));
+      } else {
+        result = Math.floor(convertToFahrenheit(input));
+      }
     } else {
-      result = Math.floor(convertToFahrenheit(input));
+      result = '...';
     }
   }
 
