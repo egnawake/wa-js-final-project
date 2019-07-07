@@ -15,7 +15,7 @@ function init() {
     switchUnitsButton: document.getElementById('switchUnits')
   }
 
-  let toCelsius = true;
+  let toCelsius = false;
   let result = 0;
 
   function switchUnit() {
