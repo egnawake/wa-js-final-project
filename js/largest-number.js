@@ -18,7 +18,7 @@ function init() {
 
     let result;
     if (firstNumberInput === '' || secondNumberInput === '') {
-      result = 'Insira dois números';
+      result = 'Please insert two numbers.';
     } else {
       result = largest(Number(firstNumberInput), Number(secondNumberInput));
     }
