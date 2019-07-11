@@ -1,0 +1,12 @@
+html {
+  font-family: 'Cabin', sans-serif;
+  font-size: 10px;
+}
+
+h1 {
+  font-size: 4.8rem;
+}
+
+p, input {
+  font-size: 2rem;
+}
