@@ -1,11 +1,3 @@
-function largest(a, b) {
-  return a > b ? a : b;
-}
-
-function isNumber(value) {
-  return !isNaN(Number(value));
-}
-
 function isInputValid(input) {
   return input !== '' && isNumber(input);
 }
