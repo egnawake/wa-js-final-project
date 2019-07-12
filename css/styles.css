@@ -43,10 +43,7 @@ nav ul {
 }
 
 nav li {
-  display: block;
-  flex: 1;
   border-bottom: 1px solid #304980;
-  padding: 0 1rem;
 }
 
 nav li:last-child {
@@ -55,7 +52,7 @@ nav li:last-child {
 
 nav a {
   display: block;
-  padding: 1.2rem 0;
+  padding: 1.2rem 1rem;
   text-decoration: none;
   color: #304980;
 }
