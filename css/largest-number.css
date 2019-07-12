@@ -6,7 +6,8 @@
 .calculator > input {
   flex: 0 1 50px;
   text-align: center;
-  margin: 0 .8rem;
+  margin: 0 2rem;
+  transition: all .25s ease-in;
 }
 
 .calculator > input:last-of-type {
@@ -14,6 +15,15 @@
 }
 
 .largest {
-  border-color: green;
-  transition: border-color;
+  border-color: #3ed8e6;
+  transform: scale(1.4);
+}
+
+.equal {
+  border-color: #e6aa49;
+}
+
+.invalid {
+  border-color: #777;
+  color: #777;
 }
