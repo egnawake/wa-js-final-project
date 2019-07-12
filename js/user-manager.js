@@ -21,7 +21,7 @@ function init() {
     { name: 'email', type: 'email', label: 'Email' },
     { name: 'age', type: 'number', label: 'Age' },
     { name: 'nationality', type: 'text', label: 'Nationality' },
-    { name: 'phone', type: 'phone', label: 'Phone' },
+    { name: 'phone', type: 'tel', label: 'Phone' },
     { name: 'street', type: 'text', label: 'Street' },
     { name: 'city', type: 'text', label: 'City' },
     { name: 'state', type: 'text', label: 'State' }
@@ -76,6 +76,10 @@ function init() {
         </ul>
       `;
 
+      const editButton = document.createElement('button');
+      editButton.setAttribute('type', 'button');
+      editButton.textContent = 'Edit';
+
       const removeButton = document.createElement('button');
       removeButton.setAttribute('type', 'button');
       removeButton.addEventListener('click', function () {
@@ -84,6 +88,7 @@ function init() {
       });
       removeButton.textContent = 'Remove';
 
+      userEl.appendChild(editButton);
       userEl.appendChild(removeButton);
       list.appendChild(userEl);
     });
