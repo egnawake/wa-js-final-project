@@ -12,8 +12,8 @@ function isInputValid(input) {
 
 function init() {
   const dom = {
-    firstNumber: document.getElementById('first-number'),
-    secondNumber: document.getElementById('second-number')
+    firstNumber: document.getElementById('firstNumber'),
+    secondNumber: document.getElementById('secondNumber')
   }
 
   function displayLargestNumber() {

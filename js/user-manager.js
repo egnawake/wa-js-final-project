@@ -6,10 +6,10 @@ document.addEventListener('DOMContentLoaded', init);
 
 function init() {
   const dom = {
-    userList: document.getElementById('user-list'),
-    sortButton: document.getElementById('sort-age'),
-    addButton: document.getElementById('add-user'),
-    addUserForm: document.getElementById('add-user-form')
+    userList: document.getElementById('userList'),
+    sortButton: document.getElementById('sortAgeButton'),
+    addButton: document.getElementById('addUserButton'),
+    addUserForm: document.getElementById('addUserForm')
   };
 
   const defaultAvatar = './assets/avatar.svg';
