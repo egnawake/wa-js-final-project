@@ -15,7 +15,7 @@ function init() {
 
   const goal = randomInt(0, 20);
   let attempts = 0;
-  dom.feedback.textContent = 'Try to find the secret number (between 0 and 20)!';
+  dom.feedback.textContent = '';
 
   function getGuess() {
     return Number(dom.guessInput.value);
