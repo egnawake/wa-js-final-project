@@ -1,0 +1,19 @@
+.calculator {
+  display: flex;
+  justify-content: center;
+}
+
+.calculator > input {
+  flex: 0 1 50px;
+  text-align: center;
+  margin: 0 .8rem;
+}
+
+.calculator > input:last-of-type {
+  order: 1;
+}
+
+.largest {
+  border-color: green;
+  transition: border-color;
+}

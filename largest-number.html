@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cabin:400,700&display=swap">
   <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/largest-number.css">
 </head>
 <body>
   <header>
@@ -25,9 +26,11 @@
   </header>
   <main>
     <p>Enter a number in each box to find out the largest of the two.</p>
-    <input type="number" id="first-number">
-    <input type="number" id="second-number">
-    <output id="result">...</output>
+    <div class="calculator">
+      <input type="text" id="first-number">
+      <input type="text" id="second-number">
+      <output id="result">?</output>
+    </div>
   </main>
 
   <script src="js/largest-number.js"></script>
