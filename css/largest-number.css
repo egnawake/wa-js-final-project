@@ -4,7 +4,8 @@
 }
 
 .calculator > input {
-  flex: 0 1 50px;
+  font-size: 3rem;
+  flex: 0 1 100px;
   text-align: center;
   margin: 0 2rem;
   transition: all .25s ease-in;
@@ -16,7 +17,7 @@
 
 .largest {
   border-color: #3ed8e6;
-  transform: scale(1.4);
+  transform: scale(1.2);
 }
 
 .equal {
