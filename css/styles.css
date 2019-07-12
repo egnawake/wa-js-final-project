@@ -1,12 +1,54 @@
 html {
   font-family: 'Cabin', sans-serif;
   font-size: 10px;
+  color: #333;
 }
 
 h1 {
-  font-size: 4.8rem;
+  font-size: 2.4rem;
 }
 
 p, input {
   font-size: 2rem;
+}
+
+header h1 {
+  color: white;
+  background: linear-gradient(#465aab, #304980);
+  margin: 0;
+  padding: 2rem 1rem;
+}
+
+nav {
+  font-size: 1.6rem;
+}
+
+nav ul {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  flex-flow: column nowrap;
+  list-style: none;
+}
+
+nav li {
+  display: block;
+  flex: 1;
+  border-bottom: 1px solid #304980;
+  padding: 0 1rem;
+}
+
+nav li:last-child {
+  border-bottom-width: 3px;
+}
+
+nav a {
+  display: block;
+  padding: 1.2rem 0;
+  text-decoration: none;
+  color: #304980;
+}
+
+main {
+  padding: 0 1.2rem;
 }
