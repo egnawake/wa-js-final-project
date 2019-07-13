@@ -29,14 +29,17 @@ function init() {
   }
 
   function displayUnits() {
-    dom.unitTo.textContent = toCelsius ? 'Celsius' : 'Fahrenheit';
-    dom.unitFrom.textContent = !toCelsius ? 'Celsius' : 'Fahrenheit';
+    dom.unitTo.textContent = toCelsius ? '°C' : '°F';
+    dom.unitFrom.textContent = !toCelsius ? '°C' : '°F';
   }
 
   function convertTemperature() {
     const input = dom.temperatureInput.value;
 
-    if (input !== '') {
+    if (input !== '' && isNumber(input)) {
+      dom.result.classList.remove('invalid');
+      dom.unitTo.classList.remove('invalid');
+
       if (toCelsius) {
         result = Math.floor(convertToCelsius(input));
       } else {
@@ -44,6 +47,8 @@ function init() {
       }
     } else {
       result = '...';
+      dom.result.classList.add('invalid');
+      dom.unitTo.classList.add('invalid');
     }
   }
 

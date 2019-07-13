@@ -1,0 +1,28 @@
+input {
+  max-width: 80px;
+}
+
+.converter {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.converter > * {
+  margin: .5rem 0;
+}
+
+.converter > input,
+.converter > output {
+  flex: 1;
+}
+
+.converter > .output *,
+.equals {
+  font-size: 3rem;
+}
+
+.invalid {
+  color: #aaa;
+}

@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cabin:400,700&display=swap">
   <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/temperature-converter.css">
 </head>
 <body>
   <header>
@@ -25,20 +26,22 @@
   </header>
   <main>
     <p>Convert temperatures from Celsius to Fahrenheit or vice-versa.</p>
-    <div>
-      <label for="temperature">Temperature</label>
-      (<span id="unitFrom">...</span>)
-      <input type="number" id="temperature">
+    <div class="converter">
+      <div class="input">
+        <input type="text" id="temperature">
+        <span id="unitFrom">...</span>
+      </div>
+      <span class="equals">=</span>
+      <div class="output">
+        <output id="result">...</output>
+        <span id="unitTo">...</span>
+      </div>
+      <button type="button" id="switchUnits">Switch units</button>
     </div>
 
-    <div>
-      Result (<span id="unitTo">...</span>)
-      <output id="result">...</output>
-    </div>
-
-    <button type="button" id="switchUnits">Switch units</button>
   </main>
 
+  <script src="js/utility.js"></script>
   <script src="js/temperature-converter.js"></script>
 </body>
 </html>
