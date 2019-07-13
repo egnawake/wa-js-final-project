@@ -26,9 +26,12 @@
   </header>
   <main>
     <p>Try to find the secret number (between 0 and 20)!</p>
-    <input type="number" id="guessInput">
-    <button type="button" id="guessButton">Guess</button>
-    <p id="feedback"></p>
+    <div id="game" class="game">
+      <input type="text" id="guessInput">
+      <button type="button" id="guessButton">Guess</button>
+    </div>
+    <p id="feedback" class="feedback"></p>
+    <p id="attempts" class="feedback"></p>
   </main>
 
   <script src="js/utility.js"></script>

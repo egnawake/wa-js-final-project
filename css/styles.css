@@ -8,7 +8,7 @@ h1 {
   font-size: 2.4rem;
 }
 
-p, input {
+p, input, button {
   font-size: 2rem;
 }
 
@@ -21,6 +21,15 @@ input {
   border: 2px solid #304980;
   border-radius: 1rem;
   padding: 1rem;
+}
+
+button {
+  border-radius: 1rem;
+  background-color: #304980;
+  padding: 1rem;
+  border: none;
+  color: white;
+  cursor: pointer;
 }
 
 header h1 {
