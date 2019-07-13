@@ -16,7 +16,7 @@ function init() {
   }
 
   let toCelsius = false;
-  let result = '...';
+  let result = '';
   dom.temperatureInput.value = '';
 
   function switchUnit() {
@@ -46,7 +46,7 @@ function init() {
         result = Math.floor(convertToFahrenheit(input));
       }
     } else {
-      result = '...';
+      result = '';
       dom.result.classList.add('invalid');
       dom.unitTo.classList.add('invalid');
     }
