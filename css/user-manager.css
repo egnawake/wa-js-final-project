@@ -21,7 +21,7 @@ ul {
 
 .card > button {
   width: 100%;
-  margin: 1rem;
+  margin: 1rem 0;
 }
 
 .info {
@@ -68,21 +68,25 @@ ul {
   margin: .6rem;
 }
 
-.add-user-form {
+.user-form {
   padding: 2rem;
 }
 
-.add-user-form > * {
+.user-form > * {
   margin: 1.6rem 0;
 }
 
-.add-user-form label,
-.add-user-form input {
+.user-form label,
+.user-form input {
   font-size: 1.6rem;
 }
 
-.add-user-form input {
+.user-form input {
   box-sizing: border-box;
   width: 100%;
   max-width: 300px;
+}
+
+.user-form button {
+  margin-right: 1.2rem;
 }

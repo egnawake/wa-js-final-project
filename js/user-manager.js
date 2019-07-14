@@ -1,7 +1,3 @@
-function toTitleCase(word) {
-  return word[0].toUpperCase() + word.substring(1);
-}
-
 document.addEventListener('DOMContentLoaded', init);
 
 function init() {
@@ -47,7 +43,7 @@ function init() {
     });
 
     dom.addButton.addEventListener('click', function () {
-      showUserForm();
+      showAddUserForm();
     });
 
     displayUsers();
@@ -81,6 +77,9 @@ function init() {
       const editButton = document.createElement('button');
       editButton.setAttribute('type', 'button');
       editButton.textContent = 'Edit';
+      editButton.addEventListener('click', function (event) {
+        handleEditUser(event, index);
+      });
 
       const removeButton = document.createElement('button');
       removeButton.setAttribute('type', 'button');
@@ -98,8 +97,8 @@ function init() {
     dom.userList.appendChild(list);
   }
 
-  function getFormValues() {
-    inputEls = document.querySelectorAll('#add-user-form input');
+  function getFormValues(form) {
+    const inputEls = form.querySelectorAll('input');
 
     values = {};
     inputEls.forEach(input => {
@@ -131,7 +130,10 @@ function init() {
     return newUser;
   }
 
-  function buildUserForm() {
+  function buildUserForm(mode, user) {
+    const form = document.createElement('div');
+    form.classList.add('user-form');
+
     fields.forEach(field => {
       const inputGroup = document.createElement('div');
 
@@ -144,26 +146,56 @@ function init() {
 
       inputGroup.appendChild(label);
       inputGroup.appendChild(inputEl);
-      dom.addUserForm.appendChild(inputGroup);
+      form.appendChild(inputGroup);
     });
 
     const confirmButton = document.createElement('button');
     confirmButton.setAttribute('type', 'button');
     confirmButton.textContent = 'Accept';
-    confirmButton.addEventListener('click', function () {
-      const values = getFormValues();
-      users.push(createUser(values));
-      displayUsers();
-      dom.addUserForm.classList.add('hidden');
-    });
+    if (mode === 'new') {
+      confirmButton.addEventListener('click', function () {
+        const values = getFormValues(form);
+        users.push(createUser(values));
+        displayUsers();
+        form.classList.add('hidden');
+      });
+    } else if (mode === 'edit') {
+      confirmButton.addEventListener('click', function () {
+        const values = getFormValues(form);
+        const editedUser = createUser(values);
+        editedUser.picture.large = users[user].picture.large;
+        users[user] = editedUser;
+        displayUsers();
+        form.classList.add('hidden');
+      });
+    }
+    form.appendChild(confirmButton);
 
-    dom.addUserForm.appendChild(confirmButton);
+    const cancelButton = document.createElement('button');
+    cancelButton.setAttribute('type', 'button');
+    cancelButton.textContent = 'Cancel';
+    cancelButton.addEventListener('click', function () {
+      form.classList.add('hidden');
+    });
+    form.appendChild(cancelButton);
+
+    return form;
   }
 
-  function showUserForm() {
+  function showAddUserForm() {
     if (!dom.addUserForm.firstChild) {
-      buildUserForm();
+      const form = buildUserForm();
+      dom.addUserForm.appendChild(form);
     }
-    dom.addUserForm.classList.remove('hidden');
+    dom.addUserForm.firstChild.classList.remove('hidden');
+  }
+
+  function handleEditUser(event, userIndex) {
+    const userEl = event.target.parentElement;
+    event.target.classList.add('hidden');
+
+    const form = buildUserForm('edit', userIndex);
+
+    userEl.appendChild(form);
   }
 }
