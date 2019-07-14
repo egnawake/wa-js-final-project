@@ -32,12 +32,30 @@ function init() {
 
   getRandomUsers().then(startApp);
 
+  function mapUserJson(userJson) {
+    userObject = {};
+    userObject.picture = userJson.picture.large;
+    userObject.firstName = userJson.name.first;
+    userObject.lastName = userJson.name.last;
+    userObject.gender = userJson.gender;
+    userObject.email = userJson.email;
+    userObject.age = userJson.dob.age;
+    userObject.nationality = userJson.nat;
+    userObject.phone = userJson.phone;
+    userObject.street = userJson.location.street;
+    userObject.city = userJson.location.city;
+    userObject.state = userJson.location.state;
+
+    return userObject;
+  }
+
   function startApp(data) {
-    users = data.results;
+    users = data.results.map(mapUserJson);
+    console.log(users);
 
     dom.sortButton.addEventListener('click', function () {
       users.sort(function (a, b) {
-        return a.dob.age - b.dob.age;
+        return a.age - b.age;
       });
       displayUsers();
     });
@@ -63,14 +81,14 @@ function init() {
 
       userEl.innerHTML = `
         <ul class="info">
-          <li class="picture"><div><img src="${user.picture.large}"></div></li>
-          <li class="name">${user.name.first} ${user.name.last}</li>
+          <li class="picture"><div><img src="${user.picture}"></div></li>
+          <li class="name">${user.firstName} ${user.lastName}</li>
           <li class="gender">${user.gender}</li>
           <li><a href="mailto:${user.email}">${user.email}</a></li>
-          <li>${user.dob.age} years old</li>
-          <li>Nationality: ${user.nat}</li>
+          <li>${user.age} years old</li>
+          <li>Nationality: ${user.nationality}</li>
           <li>Phone: ${user.phone}</li>
-          <li class="address">Address: ${user.location.street}, ${user.location.city}, ${user.location.state}</li>
+          <li class="address">Address: ${user.street}, ${user.city}, ${user.state}</li>
         </ul>
       `;
 
@@ -109,28 +127,12 @@ function init() {
   }
 
   function createUser(data) {
-    const newUser = {};
-
-    newUser.picture = {};
-    newUser.picture.large = defaultAvatar;
-    newUser.name = {};
-    newUser.name.first = data.firstName;
-    newUser.name.last = data.lastName;
-    newUser.gender = data.gender;
-    newUser.email = data.email;
-    newUser.dob = {};
-    newUser.dob.age = data.age;
-    newUser.nat = data.nationality;
-    newUser.phone = data.phone;
-    newUser.location = {};
-    newUser.location.street = data.street;
-    newUser.location.city = data.city;
-    newUser.location.state = data.state;
+    const newUser = data;
 
     return newUser;
   }
 
-  function buildUserForm(mode, user) {
+  function buildUserForm(mode, user, opener) {
     const form = document.createElement('div');
     form.classList.add('user-form');
 
@@ -140,6 +142,9 @@ function init() {
       const inputEl = document.createElement('input');
       inputEl.setAttribute('type', field.type);
       inputEl.setAttribute('name', field.name);
+      if (mode === 'edit') {
+        inputEl.value = users[user][field.name];
+      }
 
       const label = document.createElement('label');
       label.textContent = field.label;
@@ -158,15 +163,17 @@ function init() {
         users.push(createUser(values));
         displayUsers();
         form.classList.add('hidden');
+        opener.classList.remove('hidden');
       });
     } else if (mode === 'edit') {
       confirmButton.addEventListener('click', function () {
         const values = getFormValues(form);
         const editedUser = createUser(values);
-        editedUser.picture.large = users[user].picture.large;
+        editedUser.picture = users[user].picture;
         users[user] = editedUser;
         displayUsers();
         form.classList.add('hidden');
+
       });
     }
     form.appendChild(confirmButton);
@@ -176,6 +183,7 @@ function init() {
     cancelButton.textContent = 'Cancel';
     cancelButton.addEventListener('click', function () {
       form.classList.add('hidden');
+      opener.classList.remove('hidden');
     });
     form.appendChild(cancelButton);
 
@@ -191,10 +199,12 @@ function init() {
   }
 
   function handleEditUser(event, userIndex) {
+    const button = event.target;
     const userEl = event.target.parentElement;
-    event.target.classList.add('hidden');
 
-    const form = buildUserForm('edit', userIndex);
+    button.classList.add('hidden');
+
+    const form = buildUserForm('edit', userIndex, button);
 
     userEl.appendChild(form);
   }
