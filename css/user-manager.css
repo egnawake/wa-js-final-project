@@ -1,0 +1,88 @@
+ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.user-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.card {
+  flex: 1 1 100px;
+  background-color: rgb(239, 242, 250);
+  border-top-left-radius: 1rem;
+  text-align: center;
+  padding: 2rem;
+  margin: 1rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, .2);
+}
+
+.card > button {
+  width: 100%;
+  margin: 1rem;
+}
+
+.info {
+  font-size: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.info > * {
+  margin: .4rem 0;
+}
+
+.info > .name,
+.info > .gender,
+.info > .address {
+  text-transform: capitalize;
+}
+
+.info > .name {
+  margin: 1rem 0;
+  font-size: 1.4em;
+}
+
+.picture {
+  display: flex;
+  justify-content: center;
+}
+
+.picture > div {
+  box-sizing: border-box;
+  width: 128px;
+  height: 128px;
+  border: 6px solid #304980;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.actions {
+  margin: 2rem 0;
+}
+
+.actions > * {
+  margin: .6rem;
+}
+
+.add-user-form {
+  padding: 2rem;
+}
+
+.add-user-form > * {
+  margin: 1.6rem 0;
+}
+
+.add-user-form label,
+.add-user-form input {
+  font-size: 1.6rem;
+}
+
+.add-user-form input {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 300px;
+}

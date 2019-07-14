@@ -59,20 +59,22 @@ function init() {
     }
 
     const list = document.createElement('ul');
+    list.classList.add('user-list');
 
     users.forEach((user, index) => {
       const userEl = document.createElement('li');
+      userEl.classList.add('card');
 
       userEl.innerHTML = `
-        <ul class="card">
-          <li><img src="${user.picture.large}"></li>
-          <li>${user.name.first} ${user.name.last}</li>
-          <li>${user.gender}</li>
+        <ul class="info">
+          <li class="picture"><div><img src="${user.picture.large}"></div></li>
+          <li class="name">${user.name.first} ${user.name.last}</li>
+          <li class="gender">${user.gender}</li>
           <li><a href="mailto:${user.email}">${user.email}</a></li>
           <li>${user.dob.age} years old</li>
           <li>Nationality: ${user.nat}</li>
           <li>Phone: ${user.phone}</li>
-          <li>Address: ${user.location.street}, ${user.location.city}, ${user.location.state}</li>
+          <li class="address">Address: ${user.location.street}, ${user.location.city}, ${user.location.state}</li>
         </ul>
       `;
 
@@ -161,8 +163,7 @@ function init() {
   function showUserForm() {
     if (!dom.addUserForm.firstChild) {
       buildUserForm();
-    } else {
-      dom.addUserForm.classList.remove('hidden');
     }
+    dom.addUserForm.classList.remove('hidden');
   }
 }

@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cabin:400,700&display=swap">
   <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/user-manager.css">
 </head>
 <body>
   <header>
@@ -24,9 +25,11 @@
     </nav>
   </header>
   <main>
-    <button type="button" id="addUserButton">Add user</button>
-    <button type="button" id="sortAgeButton">Sort users by age</button>
-    <div id="addUserForm"></div>
+    <div class="actions">
+      <button type="button" id="addUserButton">Add user</button>
+      <button type="button" id="sortAgeButton">Sort users by age</button>
+    </div>
+    <div id="addUserForm" class="add-user-form hidden"></div>
     <div id="userList"></div>
   </main>
   <script src="js/user-manager.js"></script>
