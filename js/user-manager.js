@@ -163,7 +163,6 @@ function init() {
         users.push(createUser(values));
         displayUsers();
         form.classList.add('hidden');
-        opener.classList.remove('hidden');
       });
     } else if (mode === 'edit') {
       confirmButton.addEventListener('click', function () {
@@ -173,7 +172,7 @@ function init() {
         users[user] = editedUser;
         displayUsers();
         form.classList.add('hidden');
-
+        opener.classList.remove('hidden');
       });
     }
     form.appendChild(confirmButton);
@@ -183,7 +182,9 @@ function init() {
     cancelButton.textContent = 'Cancel';
     cancelButton.addEventListener('click', function () {
       form.classList.add('hidden');
-      opener.classList.remove('hidden');
+      if (mode === 'edit') {
+        opener.classList.remove('hidden');
+      }
     });
     form.appendChild(cancelButton);
 
@@ -192,7 +193,7 @@ function init() {
 
   function showAddUserForm() {
     if (!dom.addUserForm.firstChild) {
-      const form = buildUserForm();
+      const form = buildUserForm('new');
       dom.addUserForm.appendChild(form);
     }
     dom.addUserForm.firstChild.classList.remove('hidden');
