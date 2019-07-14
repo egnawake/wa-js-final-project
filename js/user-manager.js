@@ -84,7 +84,7 @@ function init() {
           <li class="picture"><div><img src="${user.picture}"></div></li>
           <li class="name">${user.firstName} ${user.lastName}</li>
           <li class="gender">${user.gender}</li>
-          <li><a href="mailto:${user.email}">${user.email}</a></li>
+          <li class="email"><a href="mailto:${user.email}">${user.email}</a></li>
           <li>${user.age} years old</li>
           <li>Nationality: ${user.nationality}</li>
           <li>Phone: ${user.phone}</li>
